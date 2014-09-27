@@ -1,4 +1,7 @@
-;~ HFSBoxSync v1.2.2 32-64bit
+;~ HFSBoxSync v1.2.3 32-64bit
+;~ By LeReverandNox, Camarade35 & Inquisitom
+;~ For HyperFreeSpin, love you guys ;)
+
 #LTrim on
 #SingleInstance,Force
 SetWorkingDir %A_ScriptDir%
@@ -28,6 +31,7 @@ config := "%HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml"
 ;~ On extrait les fichiers necessaires au package
 FileCreateDir, %A_Temp%\HFSBoxSync
 
+FileInstall, Ressources\HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
 FileInstall, Ressources\HFSBoxMusic.mp3, %A_Temp%\HFSBoxSync\HFSBoxMusic.mp3
 FileInstall, Ressources\icone_hfsbox.ico, %A_Temp%\HFSBoxSync\icone_hfsbox.ico
 FileInstall, Ressources\icone_hfssync.ico, %A_Temp%\HFSBoxSync\icone_hfssync.ico
@@ -284,9 +288,10 @@ StringTrimRight, node_client, node_client, 1
 FileDelete, %A_Temp%\HFSBoxSync\node.txt
 GuiControl,, MyProgress, +11
 
-; On "installe" Syncthing dans ProgramFiles
+; On "installe" Syncthing et HFSSync dans ProgramFiles
 FileCreateDir, %A_ProgramFiles%\Syncthing
 FileMove, %A_Temp%\HFSBoxSync\syncthing.exe, %A_ProgramFiles%\Syncthing, 1
+FileMove, %A_Temp%\HFSBoxSync\HFSSYnc.exe, %A_ProgramFiles%\Syncthing, 1
 GuiControl,, MyProgress, +11
 
 ; On installe les icones dans ProgramFiles
@@ -352,7 +357,7 @@ L'équipe HyperFreeSpin
 GuiControl,, MyProgress, +11
 
 ; On creer les raccourcis
-FileCreateShortcut, %A_ProgramFiles%\Syncthing\syncthing.exe, %A_Desktop%\HFS Sync.lnk, , , , %A_ProgramFiles%\Syncthing\icone_hfssync.ico
+FileCreateShortcut, %A_ProgramFiles%\Syncthing\HFSSync.exe, %A_Desktop%\HFS Sync.lnk, , , , %A_ProgramFiles%\Syncthing\icone_hfssync.ico
 FileCreateShortcut, %lettre%:\HFSBox\HyperSpin.exe, %A_Desktop%\HFSBox.lnk, , , , %A_ProgramFiles%\Syncthing\icone_hfsbox.ico
 GuiControl,, MyProgress, +11
 
@@ -368,7 +373,6 @@ Etape4:
 	Gui, Add, Text, x130 y40 vText1, Félicitations, vous venez d'installer la HFSBox
 	Gui, Add, Text, x68 y60 vText2, Veuillez envoyer ce code par MP à l'utilisateur du forum nommé : HFSBox
 	Gui, Add, Text, x40 y95 vText3, %node_client%
-	Gui, Add, CheckBox, x10 y170 vAutoStart, Démarrer HFS Sync au lancement du PC
 	Gui, Add, Button, x260 y158 w100 h35, Copier la clé ; bouton copier la clef
 	Gui, Add, Button, x380 y158 w100 h35, Terminer
 	GuiControl +BackgroundTrans, Text1
