@@ -549,7 +549,7 @@ ButtonSilence:
 }
 
 ; Bouton qui lance la musique
-ButtonMusique:
+ButtonMusique!:
 {
 	SoundPlay, %A_Temp%\HFSBoxSync\HFSBoxMusic.mp3
 	return

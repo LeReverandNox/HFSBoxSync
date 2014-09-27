@@ -1,4 +1,7 @@
-;~ HFSBoxSync v1.2.2 32-64bit
+;~ HFSBoxSync v1.2.3 32-64bit
+;~ By LeReverandNox, Camarade35 & Inquisitom
+;~ For HyperFreeSpin, love you guys ;)
+
 #LTrim on
 #SingleInstance,Force
 SetWorkingDir %A_ScriptDir%
