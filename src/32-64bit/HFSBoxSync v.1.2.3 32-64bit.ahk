@@ -374,7 +374,6 @@ Etape4:
 	Gui, Add, Text, x68 y60 vText2, Veuillez envoyer ce code par MP à l'utilisateur du forum nommé : HFSBox
 	Gui, Add, Text, x40 y95 vText3, %node_client%
 	Gui, Add, Button, x260 y158 w100 h35, Copier la clé ; bouton copier la clef
-	Gui, Add, Button, x260 y158 w100 h35, Copier la clé ; bouton copier la clef
 	Gui, Add, Button, x380 y158 w100 h35, Terminer
 	GuiControl +BackgroundTrans, Text1
 	GuiControl +BackgroundTrans, Text2
@@ -616,22 +615,15 @@ ButtonCopierlaClé:
     ; On copie la clef dans le presse-papier
     Clipboard := node_client
 	MsgBox, La clé est copiée dans le presse-papiers`nUn fichier text est également disponible sur votre bureau`nCliquez sur Terminer pour finir l'installation
-	;Gui, Destroy ;on tue le GUI et on y retourne
-    ;Goto, Etape4 ;retour au GUI
 	return
 }
 
 ; Bouton pour terminer l'installation et lancer la demande
 ButtonTerminer:
 {
-	Gui, Submit
+	Gui, Destroy
 	MsgBox, La HFSBox sera fonctionnelle une fois la synchronisation terminée
-	if (AutoStart)
-	{
-		FileCreateShortcut, %A_ProgramFiles%\Syncthing\syncthing.exe, %A_Startup%\HFS Sync.lnk, , , , %A_ProgramFiles%\Syncthing\icone_hfssync.ico
-	}
-	; On lance la demande a la fermeture de la msgbox
-	;Run, %A_Desktop%\Demande_HFSBox.txt
+	
 	Goto, Suppression
 }
 ;------------------------------------------------------------------------------------------------------------------

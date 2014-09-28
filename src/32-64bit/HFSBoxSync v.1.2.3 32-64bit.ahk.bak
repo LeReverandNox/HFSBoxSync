@@ -615,22 +615,15 @@ ButtonCopierlaClé:
     ; On copie la clef dans le presse-papier
     Clipboard := node_client
 	MsgBox, La clé est copiée dans le presse-papiers`nUn fichier text est également disponible sur votre bureau`nCliquez sur Terminer pour finir l'installation
-	;Gui, Destroy ;on tue le GUI et on y retourne
-    ;Goto, Etape4 ;retour au GUI
 	return
 }
 
 ; Bouton pour terminer l'installation et lancer la demande
 ButtonTerminer:
 {
-	Gui, Submit
+	Gui, Destroy
 	MsgBox, La HFSBox sera fonctionnelle une fois la synchronisation terminée
-	if (AutoStart)
-	{
-		FileCreateShortcut, %A_ProgramFiles%\Syncthing\syncthing.exe, %A_Startup%\HFS Sync.lnk, , , , %A_ProgramFiles%\Syncthing\icone_hfssync.ico
-	}
-	; On lance la demande a la fermeture de la msgbox
-	;Run, %A_Desktop%\Demande_HFSBox.txt
+	
 	Goto, Suppression
 }
 ;------------------------------------------------------------------------------------------------------------------
