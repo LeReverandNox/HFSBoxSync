@@ -465,6 +465,14 @@ else
 	
 	if (drive != “” && HFSBoxExist)
 	{
+	;~ On tue HFSSync et Syncthing si ils sont lancés
+	Process, Exist, HFSSync.exe
+	if ErrorLevel
+	{
+		Process, Close, HFSSync.exe
+		Process, Close, syncthing.exe
+	}
+	
 	;~ On supprime les fichiers de Syncthing
 	FileRemoveDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing, 1
 	FileRemoveDir, %A_ProgramFiles%\Syncthing, 1
@@ -495,6 +503,14 @@ else
 		if (drive != “”)
 	{
 
+	;~ On tue HFSSync et Syncthing si ils sont lancés
+	Process, Exist, HFSSync.exe
+	if ErrorLevel
+	{
+		Process, Close, HFSSync.exe
+		Process, Close, syncthing.exe
+	}
+	
 	;~ On supprime les fichiers de Syncthing
 	FileRemoveDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing, 1
 	FileRemoveDir, %A_ProgramFiles%\Syncthing, 1
@@ -564,6 +580,14 @@ ButtonMusique!:
 ; Boutton qui ecrase la config et renvoie a l'installation
 ButtonRéinstaller:
 {
+	;~ On tue HFSSync et Syncthing si ils sont lancés
+	Process, Exist, HFSSync.exe
+	if ErrorLevel
+	{
+		Process, Close, HFSSync.exe
+		Process, Close, syncthing.exe
+	}
+	
 	FileRemoveDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing, 1
 	Gui, Destroy
 	Goto, Etape1
