@@ -470,6 +470,10 @@ else
 	if ErrorLevel
 	{
 		Process, Close, HFSSync.exe
+	}
+	Process, Exist, syncthing.exe
+	if ErrorLevel
+	{
 		Process, Close, syncthing.exe
 	}
 	
@@ -508,6 +512,10 @@ else
 	if ErrorLevel
 	{
 		Process, Close, HFSSync.exe
+	}
+	Process, Exist, syncthing.exe
+	if ErrorLevel
+	{
 		Process, Close, syncthing.exe
 	}
 	
@@ -585,6 +593,10 @@ ButtonRéinstaller:
 	if ErrorLevel
 	{
 		Process, Close, HFSSync.exe
+	}
+	Process, Exist, syncthing.exe
+	if ErrorLevel
+	{
 		Process, Close, syncthing.exe
 	}
 	
