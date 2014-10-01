@@ -1,4 +1,4 @@
-;~ HFSBoxSync v1.2.3 32-64bit
+;~ HFSBoxSync, le seul, l'unique
 ;~ By LeReverandNox, Camarade35 & Inquisitom
 ;~ For HyperFreeSpin, love you guys ;)
 
@@ -31,6 +31,7 @@ config := "%HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml"
 ;~ On extrait les fichiers necessaires au package
 FileCreateDir, %A_Temp%\HFSBoxSync
 
+FileInstall, Ressources\BebasNeue.ttf, %A_Temp%\HFSBoxSync\BebasNeue.ttf
 FileInstall, Ressources\HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
 FileInstall, Ressources\HFSBoxMusic.mp3, %A_Temp%\HFSBoxSync\HFSBoxMusic.mp3
 FileInstall, Ressources\icone_hfsbox.ico, %A_Temp%\HFSBoxSync\icone_hfsbox.ico
@@ -104,10 +105,11 @@ if (arc == 0)
 	Return
 
 }
-;~ Si c'est un OS 64bit, on extrait le syncthing64 et on continue
+;~ Si c'est un OS 64bit, on extrait le syncthing64 + FontReg64 et on continue
 else
 {
 	FileInstall, Ressources\syncthing64.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	FileInstall, Ressources\FontReg64.exe,  %A_Temp%\HFSBoxSync\FontReg.exe
 }
 GoTo, Etape1
 }
@@ -275,7 +277,7 @@ syncthing.exe -generate="%HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing"
 GuiControl,, MyProgress, +11
 
 ; On l'execute, puis le supprime
-RunWait, %A_Temp%\HFSBoxSync\generate.bat, %A_Temp%\HFSBoxSync,hide,
+RunWait, %A_Temp%\HFSBoxSync\generate.bat, %A_Temp%\HFSBoxSync, hide,
 FileDelete, %A_Temp%\HFSBoxSync\generate.bat
 GuiControl,, MyProgress, +11
 
@@ -298,6 +300,13 @@ GuiControl,, MyProgress, +11
 FileMove, %A_Temp%\HFSBoxSync\icone_hfsbox.ico, %A_ProgramFiles%\Syncthing, 1
 FileMove, %A_Temp%\HFSBoxSync\icone_hfssync.ico, %A_ProgramFiles%\Syncthing, 1
 GuiControl,, MyProgress, +11
+
+;~ Si elle n'est pas deja installe, on installe la police dans %systemroot%\Fonts, et on execute FontReg
+IfNotExist, %A_WinDir%\Fonts\BebasNeue.ttf
+{
+	FileMove, %A_Temp%\HFSBoxSync\BebasNeue.ttf, %A_WinDir%\Fonts
+	Run, FontReg.exe, %A_Temp%\HFSBoxSync, hide
+}
 
 ; On recupère la lettre du disque
 StringMid, lettre, drive, 1, 1
@@ -550,6 +559,7 @@ ButtonOui:
 {
 	Gui, Destroy
 	FileInstall, Ressources\syncthing32.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	FileInstall, Ressources\FontReg32.exe, %A_Temp%\HFSBoxSync\FontReg.exe
 	Goto, Etape1
 }
 
