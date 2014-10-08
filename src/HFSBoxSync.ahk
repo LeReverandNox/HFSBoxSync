@@ -285,7 +285,7 @@ GuiControl,, MyProgress, +11
 node = %A_Temp%\HFSBoxSync\node.txt
 ;~ On decortique le node ID et on le stock dans une variable
 node_client := TF_ReadLines(node, 2, 2, RemoveTrailing = 1)
-StringTrimLeft, node_client, node_client, 24
+StringTrimLeft, node_client, node_client, 26
 StringTrimRight, node_client, node_client, 1
 FileDelete, %A_Temp%\HFSBoxSync\node.txt
 GuiControl,, MyProgress, +11
@@ -320,36 +320,44 @@ IniRead, Name_Server, %A_Temp%\HFSBoxSync\HFSBoxSync.ini, Settings, Name_Server
 ;~ On creer le XML from scratch
 FileAppend,
 (
-<configuration version="4">
-    <repository id="HFSBox" directory="%lettre%:\HFSBox" ro="false" rescanIntervalS="60" ignorePerms="false">
-        <node id="%NodeID_Server%"></node>
-        <node id="%node_client%"></node>
-        <versioning></versioning>
-    </repository>
-    <node id="%NodeID_Server%" name="%Name_Server%" compression="true">
-        <address>%Address_Server%:%Port_Server%</address>
-    </node>
-    <gui enabled="true" tls="false">
-        <address>127.0.0.1:8080</address>
-    </gui>
-    <options>
-        <listenAddress>0.0.0.0:22000</listenAddress>
-        <globalAnnounceServer>announce.syncthing.net:22026</globalAnnounceServer>
-        <globalAnnounceEnabled>true</globalAnnounceEnabled>
-        <localAnnounceEnabled>true</localAnnounceEnabled>
-        <localAnnouncePort>21025</localAnnouncePort>
-        <localAnnounceMCAddr>[ff32::5222]:21026</localAnnounceMCAddr>
-        <parallelRequests>16</parallelRequests>
-        <maxSendKbps>0</maxSendKbps>
-        <maxRecvKbps>0</maxRecvKbps>
-        <reconnectionIntervalS>60</reconnectionIntervalS>
-        <startBrowser>true</startBrowser>
-        <upnpEnabled>true</upnpEnabled>
-        <upnpLeaseMinutes>0</upnpLeaseMinutes>
-        <upnpRenewalMinutes>30</upnpRenewalMinutes>
-        <urAccepted>1</urAccepted>
-        <restartOnWakeup>true</restartOnWakeup>
-    </options>
+<configuration version="5">
+<folder id="HFSBox" path="%lettre%:\HFSBox" ro="false" rescanIntervalS="60" ignorePerms="false">
+<device id="%NodeID_Server%"></device>
+<device id="%node_client%"></device>
+
+<versioning></versioning>
+</folder>
+
+<device id="%NodeID_Server%" name="%Name_Server%" compression="true" introducer="false">
+<address>%Address_Server%:%Port_Server%</address>
+</device>
+<device id="%node_client%" name="%A_UserName%" compression="false" introducer="false">
+<address>dynamic</address>
+</device>
+
+<gui enabled="true" tls="false">
+<address>127.0.0.1:8080</address>
+</gui>
+<options>
+<listenAddress>0.0.0.0:22000</listenAddress>
+<globalAnnounceServer>announce.syncthing.net:22026</globalAnnounceServer>
+<globalAnnounceEnabled>true</globalAnnounceEnabled>
+<localAnnounceEnabled>true</localAnnounceEnabled>
+<localAnnouncePort>21025</localAnnouncePort>
+<localAnnounceMCAddr>[ff32::5222]:21026</localAnnounceMCAddr>
+
+<maxSendKbps>0</maxSendKbps>
+<maxRecvKbps>0</maxRecvKbps>
+<reconnectionIntervalS>60</reconnectionIntervalS>
+<startBrowser>true</startBrowser>
+<upnpEnabled>true</upnpEnabled>
+<upnpLeaseMinutes>0</upnpLeaseMinutes>
+<upnpRenewalMinutes>30</upnpRenewalMinutes>
+<urAccepted>1</urAccepted>
+<restartOnWakeup>true</restartOnWakeup>
+<autoUpgradeIntervalH>12</autoUpgradeIntervalH>
+<keepTemporariesH>24</keepTemporariesH>
+</options>
 </configuration>
 ), %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml
 GuiControl,, MyProgress, +11
