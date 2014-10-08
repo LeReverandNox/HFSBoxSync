@@ -367,8 +367,8 @@ FileDelete, %A_Desktop%\Demande_HFSBox.txt
 FileAppend,
 (
 Bonjour %A_UserName%
-Pour télécharger la HFSBox et la mettre à jour merci de nous transmettre le code suivant par MP à l'utilisateur HFSBox:
-%node_client%
+Pour télécharger la HFSBox et la mettre à jour merci d'envoyer votre clé par MP au membre nommé : HFSBox
+=> %node_client%
 L'équipe HyperFreeSpin
 ), %A_Desktop%\Demande_HFSBox.txt
 GuiControl,, MyProgress, +11
