@@ -31,12 +31,21 @@ config := "%HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml"
 ;~ On extrait les fichiers necessaires au package
 FileCreateDir, %A_Temp%\HFSBoxSync
 
+;~ Police d'HyperPause
 FileInstall, Ressources\BebasNeue.ttf, %A_Temp%\HFSBoxSync\BebasNeue.ttf
+
+;~ HFSSync + ses icones
 FileInstall, Ressources\HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
-FileInstall, Ressources\HFSBoxMusic.mp3, %A_Temp%\HFSBoxSync\HFSBoxMusic.mp3
 FileInstall, Ressources\icone_hfsbox.ico, %A_Temp%\HFSBoxSync\icone_hfsbox.ico
 FileInstall, Ressources\icone_hfssync.ico, %A_Temp%\HFSBoxSync\icone_hfssync.ico
+
+;~ Images pour la Web GUI
+FileInstall, Ressources\favicon.png, %A_Temp%\HFSBoxSync\favicon.png
+FileInstall, Ressources\logo-text-64.png, %A_Temp%\HFSBoxSync\logo-text-64.png
+FileInstall, Ressources\logo-text-256.png, %A_Temp%\HFSBoxSync\logo-text-256.png
 ;~ ---------------------------------------------------------------------------------------------------------
+
+;~ Images + musique pour l'installer
 FileInstall, Ressources\banniere.png, %A_Temp%\HFSBoxSync\banniere.png
 FileInstall, Ressources\border.png, %A_Temp%\HFSBoxSync\border.png
 FileInstall, Ressources\border2.png, %A_Temp%\HFSBoxSync\border2.png
@@ -49,6 +58,8 @@ FileInstall, Ressources\SecondGui.png, %A_Temp%\HFSBoxSync\SecondGui.png
 FileInstall, Ressources\ThirdGui.png, %A_Temp%\HFSBoxSync\ThirdGui.png
 FileInstall, Ressources\bordermini.png, %A_Temp%\HFSBoxSync\bordermini.png
 FileInstall, Ressources\MiniGui.png, %A_Temp%\HFSBoxSync\MiniGui.png
+FileInstall, Ressources\HFSBoxMusic.mp3, %A_Temp%\HFSBoxSync\HFSBoxMusic.mp3
+
 
 ;~ On récupere l'ini...
 UrlDownloadToFile, http://hyperfreespin.fr/HFSBox/HFSBoxSync.ini, %A_Temp%\HFSBoxSync\HFSBoxSync.ini
@@ -290,10 +301,16 @@ StringTrimRight, node_client, node_client, 1
 FileDelete, %A_Temp%\HFSBoxSync\node.txt
 GuiControl,, MyProgress, +11
 
-;~ On "installe" Syncthing et HFSSync dans ProgramFiles
+;~ On "installe" Syncthing, HFSSync et les imgages de la Web GUI dans ProgramFiles
 FileCreateDir, %A_ProgramFiles%\Syncthing
 FileMove, %A_Temp%\HFSBoxSync\syncthing.exe, %A_ProgramFiles%\Syncthing, 1
 FileMove, %A_Temp%\HFSBoxSync\HFSSYnc.exe, %A_ProgramFiles%\Syncthing, 1
+
+FileCreateDir, %A_ProgramFiles%Syncthing\gui
+FileCreateDir, %A_ProgramFiles%Syncthing\gui\img
+FileMove, %A_Temp%\HFSBoxSync\favicon.png, %A_ProgramFiles%\Syncthing\gui\img, 1
+FileMove, %A_Temp%\HFSBoxSync\logo-text-64.png, %A_ProgramFiles%\Syncthing\gui\img, 1
+FileMove, %A_Temp%\HFSBoxSync\logo-text-256.png, %A_ProgramFiles%\Syncthing\gui\img, 1
 GuiControl,, MyProgress, +11
 
 ;~ On installe les icones dans ProgramFiles
