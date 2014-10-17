@@ -506,9 +506,10 @@ else
 		Process, Close, HFSSync.exe
 	}
 	Process, Exist, syncthing.exe
-	if ErrorLevel
+	while ErrorLevel != 0
 	{
 		Process, Close, syncthing.exe
+		Process, Exist, syncthing.exe
 	}
 	
 	;~ On supprime les fichiers de Syncthing
@@ -548,9 +549,10 @@ else
 		Process, Close, HFSSync.exe
 	}
 	Process, Exist, syncthing.exe
-	if ErrorLevel
+	while ErrorLevel != 0
 	{
 		Process, Close, syncthing.exe
+		Process, Exist, syncthing.exe
 	}
 	
 	;~ On supprime les fichiers de Syncthing
@@ -630,9 +632,10 @@ ButtonRéinstaller:
 		Process, Close, HFSSync.exe
 	}
 	Process, Exist, syncthing.exe
-	if ErrorLevel
+	while ErrorLevel != 0
 	{
 		Process, Close, syncthing.exe
+		Process, Exist, syncthing.exe
 	}
 	
 	FileRemoveDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing, 1
