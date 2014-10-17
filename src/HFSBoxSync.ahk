@@ -376,7 +376,7 @@ FileAppend,
 <keepTemporariesH>24</keepTemporariesH>
 </options>
 </configuration>
-), %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml
+), %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml, UTF-8
 GuiControl,, MyProgress, +11
 
 ;~ On ecrit la demande
