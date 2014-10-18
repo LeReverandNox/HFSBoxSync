@@ -281,7 +281,7 @@ GuiControl,, MyProgress, +11
 ;~ On creer un script bat qui sert a generer le node ID et a recup le StdOut
 FileAppend,
 (
-chcp 1250
+chcp 1252
 cd %temp%\HFSBoxSync
 syncthing.exe -generate="%HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing" > node.txt
 ), %A_Temp%\HFSBoxSync\generate.bat
