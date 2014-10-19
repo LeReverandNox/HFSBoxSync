@@ -25,8 +25,11 @@ Return ""
 ;~ On lance le script en tant qu'Administrateur
 RunAsAdmin()
 
+;~ On definit AppData dans une variable, pour être sur de prendre le bon UserName (probleme de W8 avec les comptes online/local)
+EnvGet, AppDataLocal, LOCALAPPDATA
+
 ;~ On definit le config.xml dans une variable
-config := "%HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml"
+config := "%AppDataLocal%\Syncthing\config.xml"
 
 ;~ On extrait les fichiers necessaires au package
 FileCreateDir, %A_Temp%\HFSBoxSync
@@ -134,7 +137,7 @@ Etape1:
 	
 	
 ;~ Si une installation existe deja, on propose l'ecrasement
-IfExist, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml
+IfExist, %AppDataLocal%\Syncthing\config.xml
 {
 	Gui, Add, Picture, x-6 y-8 w410 h230 , %A_Temp%\HFSBoxSync\MiniGui.png
 	Gui, Add, Picture, x54 y32 w300 h90 , %A_Temp%\HFSBoxSync\bordermini.png
@@ -275,7 +278,7 @@ Gui, Show, center h60 w340, Installation en cours...
 DisableCloseButton()
 
 ;~ On creer le repertoire pour Syncthing
-FileCreateDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing
+FileCreateDir, %AppDataLocal%\Syncthing
 GuiControl,, MyProgress, +11
 
 ;~ On creer un script bat qui sert a generer le node ID et a recup le StdOut
@@ -283,7 +286,7 @@ FileAppend,
 (
 chcp 1252
 cd %temp%\HFSBoxSync
-syncthing.exe -generate="%HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing" > node.txt
+syncthing.exe -generate="%AppDataLocal%\Syncthing" > node.txt
 ), %A_Temp%\HFSBoxSync\generate.bat
 GuiControl,, MyProgress, +11
 
@@ -376,7 +379,7 @@ FileAppend,
 <keepTemporariesH>24</keepTemporariesH>
 </options>
 </configuration>
-), %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing\config.xml, UTF-8
+), %AppDataLocal%\Syncthing\config.xml, UTF-8
 GuiControl,, MyProgress, +11
 
 ;~ On ecrit la demande
@@ -513,7 +516,7 @@ else
 	}
 	
 	;~ On supprime les fichiers de Syncthing
-	FileRemoveDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing, 1
+	FileRemoveDir, %AppDataLocal%\Syncthing, 1
 	FileRemoveDir, %A_ProgramFiles%\Syncthing, 1
 	FileDelete, %A_Startup%\HFS Sync.lnk
 	FileDelete, %A_Desktop%\HFSBox.lnk
@@ -556,7 +559,7 @@ else
 	}
 	
 	;~ On supprime les fichiers de Syncthing
-	FileRemoveDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing, 1
+	FileRemoveDir, %AppDataLocal%\Syncthing, 1
 	FileRemoveDir, %A_ProgramFiles%\Syncthing, 1
 	FileDelete, %A_Startup%\HFS Sync.lnk
 	FileDelete, %A_Desktop%\HFS Sync.lnk
@@ -638,7 +641,7 @@ ButtonRéinstaller:
 		Process, Exist, syncthing.exe
 	}
 	
-	FileRemoveDir, %HOMEDRIVE%\Users\%A_UserName%\AppData\Local\Syncthing, 1
+	FileRemoveDir, %AppDataLocal%\Syncthing, 1
 	Gui, Destroy
 	Goto, Etape1
 }
