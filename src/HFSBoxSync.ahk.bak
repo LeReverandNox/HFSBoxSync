@@ -344,7 +344,7 @@ FileDelete, %AppDataLocal%\Syncthing\config.xml
 FileAppend,
 (
 <configuration version="6">
-    <folder id="HFSBox" path="%lettre%\HFSBox" ro="false" rescanIntervalS="60" ignorePerms="false">
+    <folder id="HFSBox" path="%lettre%:\HFSBox" ro="false" rescanIntervalS="60" ignorePerms="false">
 		<device id="%NodeID_Server%"></device>
 		<device id="%node_client%"></device>
         <versioning></versioning>

@@ -310,10 +310,11 @@ FileMove, %A_Temp%\HFSBoxSync\syncthing.exe, %A_ProgramFiles%\Syncthing, 1
 FileMove, %A_Temp%\HFSBoxSync\HFSSYnc.exe, %A_ProgramFiles%\Syncthing, 1
 
 FileCreateDir, %A_ProgramFiles%\Syncthing\gui
-FileCreateDir, %A_ProgramFiles%\Syncthing\gui\img
-FileMove, %A_Temp%\HFSBoxSync\favicon.png, %A_ProgramFiles%\Syncthing\gui\img, 1
-FileMove, %A_Temp%\HFSBoxSync\logo-text-64.png, %A_ProgramFiles%\Syncthing\gui\img, 1
-FileMove, %A_Temp%\HFSBoxSync\logo-text-256.png, %A_ProgramFiles%\Syncthing\gui\img, 1
+FileCreateDir, %A_ProgramFiles%\Syncthing\gui\assets
+FileCreateDir, %A_ProgramFiles%\Syncthing\gui\assets\img
+FileMove, %A_Temp%\HFSBoxSync\favicon.png, %A_ProgramFiles%\Syncthing\gui\assets\img, 1
+FileMove, %A_Temp%\HFSBoxSync\logo-text-64.png, %A_ProgramFiles%\Syncthing\gui\assets\img, 1
+FileMove, %A_Temp%\HFSBoxSync\logo-text-256.png, %A_ProgramFiles%\Syncthing\gui\assets\img, 1
 GuiControl,, MyProgress, +11
 
 ;~ On installe les icones dans ProgramFiles
