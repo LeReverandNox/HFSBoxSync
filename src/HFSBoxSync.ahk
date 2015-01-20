@@ -517,8 +517,12 @@ else
 		Process, Exist, syncthing.exe
 	}
 	
-	;~ On supprime les fichiers de Syncthing
-	FileRemoveDir, %AppDataLocal%\Syncthing, 1
+	;~ On supprime les fichiers de Syncthing sauf les certificats
+	FileRemoveDir, %AppDataLocal%\Syncthing\index, 1
+	FileDelete, %AppDataLocal%\Syncthing\*.xml
+	FileDelete, %AppDataLocal%\Syncthing\*.txt
+	FileDelete, %AppDataLocal%\Syncthing\*.log
+	FileDelete, %AppDataLocal%\Syncthing\*.cfg
 	FileRemoveDir, %A_ProgramFiles%\Syncthing, 1
 	FileDelete, %A_Startup%\HFS Sync.lnk
 	FileDelete, %A_Desktop%\HFSBox.lnk
@@ -560,8 +564,12 @@ else
 		Process, Exist, syncthing.exe
 	}
 	
-	;~ On supprime les fichiers de Syncthing
-	FileRemoveDir, %AppDataLocal%\Syncthing, 1
+	;~ On supprime les fichiers de Syncthing sauf les certificats
+	FileRemoveDir, %AppDataLocal%\Syncthing\index, 1
+	FileDelete, %AppDataLocal%\Syncthing\*.xml
+	FileDelete, %AppDataLocal%\Syncthing\*.txt
+	FileDelete, %AppDataLocal%\Syncthing\*.log
+	FileDelete, %AppDataLocal%\Syncthing\*.cfg
 	FileRemoveDir, %A_ProgramFiles%\Syncthing, 1
 	FileDelete, %A_Startup%\HFS Sync.lnk
 	FileDelete, %A_Desktop%\HFS Sync.lnk
@@ -643,7 +651,13 @@ ButtonRéinstaller:
 		Process, Exist, syncthing.exe
 	}
 	
-	FileRemoveDir, %AppDataLocal%\Syncthing, 1
+	;~ On supprime les fichiers de Syncthing, sauf les certificats
+	FileRemoveDir, %AppDataLocal%\Syncthing\index, 1
+	FileDelete, %AppDataLocal%\Syncthing\*.xml
+	FileDelete, %AppDataLocal%\Syncthing\*.txt
+	FileDelete, %AppDataLocal%\Syncthing\*.log
+	FileDelete, %AppDataLocal%\Syncthing\*.cfg
+
 	Gui, Destroy
 	Goto, Etape1
 }
