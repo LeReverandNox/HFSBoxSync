@@ -119,10 +119,28 @@ if (arc == 0)
 	Return
 
 }
-;~ Si c'est un OS 64bit, on extrait le syncthing64 + FontReg64 et on continue
+;~ Si c'est un OS 64bit, on télécharge syncthing64 et on extrait FontReg64
 else
 {
-	FileInstall, Ressources\syncthing64.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	;~ On creer un GUI avec une progress bar pour le téléchargement
+	Gui, Add, Picture, x-6 y-8 h400 w600 , %A_Temp%\HFSBoxSync\Fond.jpg
+	Gui, Add, Text, x50 y40 w300 h20 vText1, Téléchargement de la dernière version disponible...
+	Gui, Add, Progress, x10 y10 w320 h20 cBlue vDownloadProgress
+	GuiControl +BackgroundTrans, Text1
+	Gui, Show, center h60 w340, Téléchargement de la dernière version disponible...
+	DisableCloseButton()
+	GuiControl,, DownloadProgress, +25
+	Sleep, 1000
+	GuiControl,, DownloadProgress, +25
+	
+	;~ On télécharge syncthing64
+	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/syncthing64.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	
+	GuiControl,, DownloadProgress, +25
+	Sleep, 1000
+	GuiControl,, DownloadProgress, +25
+	Gui, Destroy
+	
 	FileInstall, Ressources\FontReg64.exe,  %A_Temp%\HFSBoxSync\FontReg.exe
 }
 GoTo, Etape1
@@ -598,7 +616,26 @@ else
 ButtonOui:
 {
 	Gui, Destroy
-	FileInstall, Ressources\syncthing32.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	
+	;~ On creer un GUI avec une progress bar pour le téléchargement de syncthing
+	Gui, Add, Picture, x-6 y-8 h400 w600 , %A_Temp%\HFSBoxSync\Fond.jpg
+	Gui, Add, Text, x50 y40 w300 h20 vText1, Téléchargement de la dernière version disponible...
+	Gui, Add, Progress, x10 y10 w320 h20 cBlue vDownloadProgress
+	GuiControl +BackgroundTrans, Text1
+	Gui, Show, center h60 w340, Téléchargement de la dernière version disponible...
+	DisableCloseButton()
+	GuiControl,, DownloadProgress, +25
+	Sleep, 1000
+	GuiControl,, DownloadProgress, +25
+	
+	;~ On télécharge syncthing32
+	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/syncthing32.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	
+	GuiControl,, DownloadProgress, +25
+	Sleep, 1000
+	GuiControl,, DownloadProgress, +25
+	Gui, Destroy
+
 	FileInstall, Ressources\FontReg32.exe, %A_Temp%\HFSBoxSync\FontReg.exe
 	Goto, Etape1
 }
