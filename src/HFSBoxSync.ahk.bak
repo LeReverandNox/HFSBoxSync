@@ -534,7 +534,7 @@ else
 	}
 	
 	;~ On supprime les fichiers de Syncthing sauf les certificats
-	FileRemoveDir, %AppDataLocal%\Syncthing\index, 1
+	FileRemoveDir, %AppDataLocal%\Syncthing\index-v0.11.0.db, 1
 	FileDelete, %AppDataLocal%\Syncthing\*.xml
 	FileDelete, %AppDataLocal%\Syncthing\*.txt
 	FileDelete, %AppDataLocal%\Syncthing\*.log
