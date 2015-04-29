@@ -133,9 +133,10 @@ else
 	Sleep, 1000
 	GuiControl,, DownloadProgress, +25
 	
-	;~ On télécharge syncthing
+	;~ On télécharge syncthing64
 	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/syncthing64.exe, %A_Temp%\HFSBoxSync\syncthing.exe
-	
+	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
+
 	GuiControl,, DownloadProgress, +25
 	Sleep, 1000
 	GuiControl,, DownloadProgress, +25
@@ -628,8 +629,9 @@ ButtonOui:
 	Sleep, 1000
 	GuiControl,, DownloadProgress, +25
 	
-	;~ On télécharge syncthing
+	;~ On télécharge syncthing32
 	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/syncthing32.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
 	
 	GuiControl,, DownloadProgress, +25
 	Sleep, 1000

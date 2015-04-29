@@ -38,7 +38,6 @@ FileCreateDir, %A_Temp%\HFSBoxSync
 FileInstall, Ressources\BebasNeue.ttf, %A_Temp%\HFSBoxSync\BebasNeue.ttf
 
 ;~ HFSSync + ses icones
-FileInstall, Ressources\HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
 FileInstall, Ressources\icone_hfsbox.ico, %A_Temp%\HFSBoxSync\icone_hfsbox.ico
 FileInstall, Ressources\icone_hfssync.ico, %A_Temp%\HFSBoxSync\icone_hfssync.ico
 
@@ -135,7 +134,8 @@ else
 	
 	;~ On télécharge syncthing64
 	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/syncthing64.exe, %A_Temp%\HFSBoxSync\syncthing.exe
-	
+	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
+
 	GuiControl,, DownloadProgress, +25
 	Sleep, 1000
 	GuiControl,, DownloadProgress, +25
@@ -630,6 +630,7 @@ ButtonOui:
 	
 	;~ On télécharge syncthing32
 	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/syncthing32.exe, %A_Temp%\HFSBoxSync\syncthing.exe
+	URLDownloadToFile, http://hyperfreespin.fr/HFSBox/HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
 	
 	GuiControl,, DownloadProgress, +25
 	Sleep, 1000
