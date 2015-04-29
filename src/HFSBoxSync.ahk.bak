@@ -348,6 +348,8 @@ IfNotExist, %A_WinDir%\Fonts\BebasNeue.ttf
 ;~ On recupère la lettre du disque
 StringMid, lettre, drive, 1, 1
 
+;~ On créer le répertoire de la HFSBox
+FileCreateDir, %lettre%:\HFSBox
 ;~ On lit ces parametres dans l'ini
 IniRead, NodeID_Server, %A_Temp%\HFSBoxSync\HFSBoxSync.ini, Settings, NodeID_Server
 IniRead, Address_Server, %A_Temp%\HFSBoxSync\HFSBoxSync.ini, Settings, Address_Server
@@ -581,7 +583,7 @@ else
 	}
 	
 	;~ On supprime les fichiers de Syncthing sauf les certificats
-	FileRemoveDir, %AppDataLocal%\Syncthing\index, 1
+	FileRemoveDir, %AppDataLocal%\Syncthing\index-v0.11.0.db, 1
 	FileDelete, %AppDataLocal%\Syncthing\*.xml
 	FileDelete, %AppDataLocal%\Syncthing\*.txt
 	FileDelete, %AppDataLocal%\Syncthing\*.log

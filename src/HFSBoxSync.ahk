@@ -348,6 +348,9 @@ IfNotExist, %A_WinDir%\Fonts\BebasNeue.ttf
 ;~ On recupère la lettre du disque
 StringMid, lettre, drive, 1, 1
 
+;~ On créer le répertoire de la HFSBox
+FileCreateDir, %lettre%:\HFSBox
+
 ;~ On lit ces parametres dans l'ini
 IniRead, NodeID_Server, %A_Temp%\HFSBoxSync\HFSBoxSync.ini, Settings, NodeID_Server
 IniRead, Address_Server, %A_Temp%\HFSBoxSync\HFSBoxSync.ini, Settings, Address_Server
