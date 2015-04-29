@@ -38,14 +38,12 @@ FileCreateDir, %A_Temp%\HFSBoxSync
 FileInstall, Ressources\BebasNeue.ttf, %A_Temp%\HFSBoxSync\BebasNeue.ttf
 
 ;~ HFSSync + ses icones
-FileInstall, Ressources\HFSSync.exe, %A_Temp%\HFSBoxSync\HFSSync.exe
 FileInstall, Ressources\icone_hfsbox.ico, %A_Temp%\HFSBoxSync\icone_hfsbox.ico
 FileInstall, Ressources\icone_hfssync.ico, %A_Temp%\HFSBoxSync\icone_hfssync.ico
 
 ;~ Images pour la Web GUI
 FileInstall, Ressources\favicon.png, %A_Temp%\HFSBoxSync\favicon.png
-FileInstall, Ressources\logo-text-64.png, %A_Temp%\HFSBoxSync\logo-text-64.png
-FileInstall, Ressources\logo-text-256.png, %A_Temp%\HFSBoxSync\logo-text-256.png
+FileInstall, Ressources\logo-horizontal.svg, %A_Temp%\HFSBoxSync\logo-horizontal.svg
 ;~ ---------------------------------------------------------------------------------------------------------
 
 ;~ Images + musique pour l'installer
@@ -332,8 +330,7 @@ FileCreateDir, %A_ProgramFiles%\Syncthing\gui
 FileCreateDir, %A_ProgramFiles%\Syncthing\gui\assets
 FileCreateDir, %A_ProgramFiles%\Syncthing\gui\assets\img
 FileMove, %A_Temp%\HFSBoxSync\favicon.png, %A_ProgramFiles%\Syncthing\gui\assets\img, 1
-FileMove, %A_Temp%\HFSBoxSync\logo-text-64.png, %A_ProgramFiles%\Syncthing\gui\assets\img, 1
-FileMove, %A_Temp%\HFSBoxSync\logo-text-256.png, %A_ProgramFiles%\Syncthing\gui\assets\img, 1
+FileMove, %A_Temp%\HFSBoxSync\logo-horizontal.svg, %A_ProgramFiles%\Syncthing\gui\assets\img, 1
 GuiControl,, MyProgress, +11
 
 ;~ On installe les icones dans ProgramFiles
