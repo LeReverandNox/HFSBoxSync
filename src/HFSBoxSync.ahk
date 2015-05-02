@@ -223,7 +223,7 @@ DrivespaceFree, free, %MyFolder%
 DriveGet, type, type, %MyFolder%
 DriveGet, status, status, %MyFolder% 
 
-if (type == "Fixed" && status == "Ready" && free > Taille_Box) ;~ On verifie que le lecteur est bien un HDD avec 50Go de libre
+if (type == "Fixed" && status == "Ready") ;~ On verifie que le lecteur est bien un HDD avec 50Go de libre
 {
 ;~ ici on a le BON disque qui correspond à tous nos critères
 StringLeft, OutputVar, MyFolder, 1
